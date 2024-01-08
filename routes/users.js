@@ -8,9 +8,6 @@ var validate = require('../validates/user')
 const {validationResult} = require('express-validator');
 
 
-
-
-
 router.get('/', async function (req, res, next) {
   console.log(req.query);
   var usersAll = await modelUser.getall(req.query);
@@ -24,6 +21,7 @@ router.get('/:id', async function (req, res, next) {// get by ID
     responseData.responseReturn(res, 404, false, "khong tim thay user");
   }
 });
+
 router.post('/add',validate.validator(),
   async function (req, res, next) {
     var errors = validationResult(req);
@@ -54,6 +52,7 @@ router.put('/edit/:id', async function (req, res, next) {
     responseData.responseReturn(res, 404, false, "khong tim thay user");
   }
 });
+
 router.delete('/delete/:id', function (req, res, next) {//delete by Id
   try {
     var user = modelUser.findByIdAndDelete(req.params.id);

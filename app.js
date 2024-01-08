@@ -10,6 +10,8 @@ var usersRouter = require('./routes/users');
 var itemsRouter = require('./routes/items');
 var authenRouter = require('./routes/authen');
 var departmentsRouter = require('./routes/departments');
+var productsRouter = require('./routes/products');
+var categoryRouter = require('./routes/category');
 var app = express();
 
 // view engine setup
@@ -27,8 +29,10 @@ app.use('/users', usersRouter);
 app.use('/items',itemsRouter);
 app.use('/authen',authenRouter);
 app.use('/departments',departmentsRouter);
+app.use('/products',productsRouter);
+app.use('/category',categoryRouter);
 
-mongoose.connect("mongodb://127.0.0.1:27017/TestS2");
+mongoose.connect("mongodb://127.0.0.1:27017/TestS3");
 mongoose.connection.once('open', function(){
   console.log("thanh cong");
 });
